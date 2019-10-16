@@ -16,10 +16,7 @@
 
 package org.springframework.beans.factory.aspectj;
 
-import java.io.Serializable;
-
 import org.aspectj.lang.annotation.control.CodeGenerationHint;
-
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.DisposableBean;
@@ -49,20 +46,23 @@ public aspect AnnotationBeanConfigurerAspect extends AbstractInterfaceDrivenDepe
 
 	private BeanConfigurerSupport beanConfigurerSupport = new BeanConfigurerSupport();
 
-
+	@Override
 	public void setBeanFactory(BeanFactory beanFactory) {
 		this.beanConfigurerSupport.setBeanWiringInfoResolver(new AnnotationBeanWiringInfoResolver());
 		this.beanConfigurerSupport.setBeanFactory(beanFactory);
 	}
 
-	public void afterPropertiesSet() {
+	@Override
+    public void afterPropertiesSet() {
 		this.beanConfigurerSupport.afterPropertiesSet();
 	}
 
+	@Override
 	public void configureBean(Object bean) {
 		this.beanConfigurerSupport.configureBean(bean);
 	}
 
+	@Override
 	public void destroy() {
 		this.beanConfigurerSupport.destroy();
 	}
