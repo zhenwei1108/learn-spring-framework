@@ -16,16 +16,11 @@
 
 package org.springframework.util;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 import org.springframework.lang.Nullable;
+
+import java.util.*;
 
 /**
  * Utility class for working with Strings that have placeholder values in them. A placeholder takes the form
@@ -127,7 +122,7 @@ public class PropertyPlaceholderHelper {
 	protected String parseStringValue(
 			String value, PlaceholderResolver placeholderResolver, @Nullable Set<String> visitedPlaceholders) {
 
-		int startIndex = value.indexOf(this.placeholderPrefix);
+		int startIndex = value.indexOf(this.placeholderPrefix);// ${
 		if (startIndex == -1) {
 			return value;
 		}
@@ -187,14 +182,21 @@ public class PropertyPlaceholderHelper {
 		return result.toString();
 	}
 
+	/**
+	* @method: findPlaceholderEndIndex
+	* @params: [buf, startIndex] //application.xml, ${ 的开始索引
+	* @author: zhenwei
+	* @Description: 查找最后一个占位符的索引
+	* @date: 2019/10/16 10:46
+	*/
 	private int findPlaceholderEndIndex(CharSequence buf, int startIndex) {
-		int index = startIndex + this.placeholderPrefix.length();
+		int index = startIndex + this.placeholderPrefix.length(); // ${后的索引
 		int withinNestedPlaceholder = 0;
 		while (index < buf.length()) {
-			if (StringUtils.substringMatch(buf, index, this.placeholderSuffix)) {
+			if (StringUtils.substringMatch(buf, index, this.placeholderSuffix)) { // }
 				if (withinNestedPlaceholder > 0) {
 					withinNestedPlaceholder--;
-					index = index + this.placeholderSuffix.length();
+					index = index + this.placeholderSuffix.length();// 加了一个右括号  ( '${}' )
 				}
 				else {
 					return index;

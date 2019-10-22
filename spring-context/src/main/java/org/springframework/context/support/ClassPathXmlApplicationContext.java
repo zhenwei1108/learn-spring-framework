@@ -139,8 +139,10 @@ public class ClassPathXmlApplicationContext extends AbstractXmlApplicationContex
 			throws BeansException {
 
 		super(parent);
+		//填充占位符?
 		setConfigLocations(configLocations);
 		if (refresh) {
+			//核心方法
 			refresh();
 		}
 	}
