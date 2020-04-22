@@ -240,6 +240,10 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 		return wrapIfNecessary(bean, beanName, cacheKey);
 	}
 
+	/*
+	bean 实例化前  其为InstantiationAwareBeanPostProcessor 的接口
+	beanPostProcess接口为  // postProcessBeforeInitialization 初始化前
+	 */
 	@Override
 	public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) {
 		Object cacheKey = getCacheKey(beanClass, beanName);
