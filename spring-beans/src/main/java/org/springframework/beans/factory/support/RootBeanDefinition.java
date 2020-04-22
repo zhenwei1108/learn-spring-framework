@@ -50,6 +50,7 @@ import org.springframework.util.Assert;
  * @author Juergen Hoeller
  * @see GenericBeanDefinition
  * @see ChildBeanDefinition
+ * //bean的定义
  */
 @SuppressWarnings("serial")
 public class RootBeanDefinition extends AbstractBeanDefinition {
