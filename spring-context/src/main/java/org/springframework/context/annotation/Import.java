@@ -56,6 +56,7 @@ import java.lang.annotation.Target;
 public @interface Import {
 
 	/**
+	 * value 需要实现 {@link ImportBeanDefinitionRegistrar} registerBeanDefinitions接口
 	 * {@link Configuration @Configuration}, {@link ImportSelector},
 	 * {@link ImportBeanDefinitionRegistrar}, or regular component classes to import.
 	 */

@@ -499,11 +499,11 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 			// Tell the subclass to refresh the internal bean factory.
 			// 销毁原有的beanFactory, 获取新的beanFactory,为每个bean生成BeanDefinition
-			//刚和创建的默认为: DefaultListableBeanFactory
+			//刚创建的默认为: DefaultListableBeanFactory
 			ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
 
 			// Prepare the bean factory for use in this context.
-			//BeanFactory的准备工作
+			//BeanFactory的准备工作，
 			//标准的 beanFactory,设置ClassLoader, 设置spel表达式解析器,增加忽略注入的接口,添加bean后处理器等
 			prepareBeanFactory(beanFactory);
 
@@ -514,9 +514,9 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				postProcessBeanFactory(beanFactory);
 //------------------------------------以上为BeanFactory的初始化和准备工作---------------------------------------------------------------
 				// Invoke factory processors registered as beans in the context.
-				//实话话并调用所有注册的beanFactory后处理器,(实现接口 BeanFactoryPostProcessor 的bean，在beanFactory标准初始化之后执行）。
-				//PropertyPlaceholderConfigurer 处理占位符
-				invokeBeanFactoryPostProcessors(beanFactory);
+				//实例化并调用所有注册的beanFactory后处理器,(实现接口 BeanFactoryPostProcessor 的bean，在beanFactory标准初始化之后执行）。
+				//PropertyPlaceholderConfigurer 处理占位符   实例化BeanDefinitionRegistryPostProcessor  和 BeanFactoryPostProcessor
+				invokeBeanFactoryPostProcessors(beanFactory);//实例化bean
 
 				// Register bean processors that intercept bean creation.
 				//实例化和注册beanFactory中扩展了BeanPostProcessor的bean
@@ -539,7 +539,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 				registerListeners();
 
 				// Instantiate all remaining (non-lazy-init) singletons.
-				//实例化剩余的单例 , 实例化的过程各种BeanPostProcessor开始起作用。
+				//实例化剩余的单例 , 实例化的过程各种 BeanPostProcessor开始起作用。
 				finishBeanFactoryInitialization(beanFactory);
 
 				// Last step: publish corresponding event.
@@ -591,7 +591,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		}
 
 		// Initialize any placeholder property sources in the context environment.
-		// 初始化任何占位符
+		// 初始化任何占位符,未实现则不做任务操作
 		initPropertySources();
 
 		// Validate that all properties marked as required are resolvable:
@@ -699,7 +699,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 * <p>Must be called before singleton instantiation.
 	 */
 	protected void invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory beanFactory) {
-		PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(beanFactory, getBeanFactoryPostProcessors());
+		PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(beanFactory, getBeanFactoryPostProcessors());//实例化bean
 
 		// Detect a LoadTimeWeaver and prepare for weaving, if found in the meantime
 		// (e.g. through an @Bean method registered by ConfigurationClassPostProcessor)
@@ -871,6 +871,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		beanFactory.freezeConfiguration();
 
 		// Instantiate all remaining (non-lazy-init) singletons.
+		//初始化所有单实例bean 创建
 		beanFactory.preInstantiateSingletons();
 	}
 

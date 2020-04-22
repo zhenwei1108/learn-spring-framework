@@ -95,6 +95,7 @@ public interface ImportBeanDefinitionRegistrar {
 	 * <p>The default implementation is empty.
 	 * @param importingClassMetadata annotation metadata of the importing class
 	 * @param registry current bean definition registry
+	 *                 //实现此接口
 	 */
 	default void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
 	}

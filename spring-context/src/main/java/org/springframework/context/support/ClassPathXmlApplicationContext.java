@@ -139,7 +139,7 @@ public class ClassPathXmlApplicationContext extends AbstractXmlApplicationContex
 			throws BeansException {
 
 		super(parent);
-		//填充占位符?
+		//将配置文件名写入  String[] configLocations
 		setConfigLocations(configLocations);
 		if (refresh) {
 			//核心方法
