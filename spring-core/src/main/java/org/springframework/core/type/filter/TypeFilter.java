@@ -16,10 +16,10 @@
 
 package org.springframework.core.type.filter;
 
-import java.io.IOException;
-
 import org.springframework.core.type.classreading.MetadataReader;
 import org.springframework.core.type.classreading.MetadataReaderFactory;
+
+import java.io.IOException;
 
 /**
  * Base interface for type filters using a
@@ -30,6 +30,7 @@ import org.springframework.core.type.classreading.MetadataReaderFactory;
  * @author Mark Fisher
  * @since 2.5
  */
+//实现此接口，自定义类加载的过滤器。
 @FunctionalInterface
 public interface TypeFilter {
 
