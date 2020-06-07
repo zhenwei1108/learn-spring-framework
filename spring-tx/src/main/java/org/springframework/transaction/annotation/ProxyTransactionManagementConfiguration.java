@@ -62,8 +62,10 @@ public class ProxyTransactionManagementConfiguration extends AbstractTransaction
 	@Role(BeanDefinition.ROLE_INFRASTRUCTURE)
 	public TransactionInterceptor transactionInterceptor(
 			TransactionAttributeSource transactionAttributeSource) {
+		//拦截器
 		TransactionInterceptor interceptor = new TransactionInterceptor();
 		interceptor.setTransactionAttributeSource(transactionAttributeSource);
+		//填充 txManager
 		if (this.txManager != null) {
 			interceptor.setTransactionManager(this.txManager);
 		}

@@ -57,6 +57,7 @@ import org.springframework.core.type.AnnotationMetadata;
  * @see Import
  * @see ImportSelector
  * @see Configuration
+ * 实现此接口,可以自定义的在BeanDefinitionRegistry中注册组件 使用{@link Import}注解
  */
 public interface ImportBeanDefinitionRegistrar {
 
