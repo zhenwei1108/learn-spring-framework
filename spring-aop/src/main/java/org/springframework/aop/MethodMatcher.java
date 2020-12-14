@@ -49,6 +49,17 @@ import java.lang.reflect.Method;
  * @since 11.11.2003
  * @see Pointcut
  * @see ClassFilter
+ *
+ *
+ * 先使用 isRuntime() 方法校验是 静态切入点{@link org.springframework.aop.support.StaticMethodMatcherPointcut}
+ * 						  或 动态切入点 {@link org.springframework.aop.support.DynamicMethodMatcherPointcut}
+ * 后使用 matches(Method method, Class<?> targetClass); 进行方法匹配
+ * 			若为静态，则缓存匹配结果。 不再后续检测，下次使用缓存结果。
+ * 			若为动态，则确定方法的整体适用性，若返回true，则执行下一步。
+ * 最终使用 matches(Method method, Class<?> targetClass, Object... args); 进行进一步检查。
+ *
+ * 可以使用 matches（...） 方法进行个性化检查
+ *
  */
 public interface MethodMatcher {
 

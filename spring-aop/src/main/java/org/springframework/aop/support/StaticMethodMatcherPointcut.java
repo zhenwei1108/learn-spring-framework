@@ -20,6 +20,8 @@ import org.springframework.aop.ClassFilter;
 import org.springframework.aop.MethodMatcher;
 import org.springframework.aop.Pointcut;
 
+import java.lang.reflect.Method;
+
 /**
  * Convenient superclass when we want to force subclasses to implement the
  * {@link MethodMatcher} interface but subclasses will want to be pointcuts.
@@ -29,6 +31,15 @@ import org.springframework.aop.Pointcut;
  *
  * @author Rod Johnson
  * @author Juergen Hoeller
+ *
+ * 静态切入点
+ * 	先使用 getClassFilter（） 进行类的校验。 详见{@link ClassFilter#matches(Class)}  匹配：true  否则： false
+ * 	后使用 getMethodMatcher（）进行方法的校验， 详见{@link MethodMatcher}
+ * 	在 MethodMatcher 中， 静态切入，先使用 {@link MethodMatcher#isRuntime()} 校验是静态还是动态， 静态：false ， 动态：true
+ * 	然后使用{@link MethodMatcher#matches(Method, Class)} 适用性检查，并缓存检查结果。
+ * 	完毕
+ * 	动态切入：见{@link DynamicMethodMatcherPointcut} 操作
+ *
  */
 public abstract class StaticMethodMatcherPointcut extends StaticMethodMatcher implements Pointcut {
 
