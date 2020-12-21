@@ -22,6 +22,13 @@ package org.aopalliance.aop;
  *
  * @author Rod Johnson
  * @version $Id: Advice.java,v 1.1 2004/03/19 17:02:16 johnsonr Exp $
+ * 通知 源接口
+ * 常见使用实现见:
+ * {@link org.springframework.aop.AfterReturningAdvice}	后置
+ * {@link org.springframework.aop.MethodBeforeAdvice} 	前置
+ * {@link org.aopalliance.intercept.MethodInterceptor}  环绕
+ * {@link org.springframework.aop.ThrowsAdvice}  异常
+ *
  */
 public interface Advice {
 

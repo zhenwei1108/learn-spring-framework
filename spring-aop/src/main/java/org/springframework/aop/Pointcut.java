@@ -16,6 +16,8 @@
 
 package org.springframework.aop;
 
+import java.lang.reflect.Method;
+
 /**
  * Core Spring pointcut abstraction.
  *
@@ -29,6 +31,10 @@ package org.springframework.aop;
  * @see org.springframework.aop.support.Pointcuts
  * @see org.springframework.aop.support.ClassFilters
  * @see org.springframework.aop.support.MethodMatchers
+ *
+ * 切点 接口类
+ * 	使用 {@link ClassFilter#matches(Class) }校验类是否匹配
+ * 	使用 {@link MethodMatcher#matches(Method, Class)} 校验方法是否匹配
  */
 public interface Pointcut {
 

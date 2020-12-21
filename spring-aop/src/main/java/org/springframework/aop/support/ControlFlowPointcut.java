@@ -16,16 +16,16 @@
 
 package org.springframework.aop.support;
 
-import java.io.Serializable;
-import java.lang.reflect.Method;
-import java.util.concurrent.atomic.AtomicInteger;
-
 import org.springframework.aop.ClassFilter;
 import org.springframework.aop.MethodMatcher;
 import org.springframework.aop.Pointcut;
 import org.springframework.lang.Nullable;
 import org.springframework.util.Assert;
 import org.springframework.util.ObjectUtils;
+
+import java.io.Serializable;
+import java.lang.reflect.Method;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Pointcut and method matcher for use in simple <b>cflow</b>-style pointcut.
@@ -36,6 +36,7 @@ import org.springframework.util.ObjectUtils;
  * @author Rob Harrop
  * @author Juergen Hoeller
  * @author Sam Brannen
+ *  控制流切入点
  */
 @SuppressWarnings("serial")
 public class ControlFlowPointcut implements Pointcut, ClassFilter, MethodMatcher, Serializable {
