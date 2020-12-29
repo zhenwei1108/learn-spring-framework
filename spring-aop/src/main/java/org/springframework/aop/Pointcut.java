@@ -35,6 +35,9 @@ import java.lang.reflect.Method;
  * 切点 接口类
  * 	使用 {@link ClassFilter#matches(Class) }校验类是否匹配
  * 	使用 {@link MethodMatcher#matches(Method, Class)} 校验方法是否匹配
+ *
+ * @see org.springframework.aop.support.StaticMethodMatcherPointcut  静态切面
+ * @see org.springframework.aop.support.DynamicMethodMatcherPointcut  动态切面
  */
 public interface Pointcut {
 
