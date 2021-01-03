@@ -491,7 +491,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	* @date: 2019/10/16 14:10
 	*/
 	@Override
-	public void refresh() throws BeansException, IllegalStateException {
+	public void  refresh() throws BeansException, IllegalStateException {
 		synchronized (this.startupShutdownMonitor) {
 			// Prepare this context for refreshing.
 			//容器刷新前准备,设置上下文状态,获取属性,验证必要的属性等
@@ -509,7 +509,8 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 			try {
 				// Allows post-processing of the bean factory in context subclasses.
-				//模板方法,此时所有的beanDefinition已经加载,但是没有实例化,允许在子类中对beanFactory进行扩展处理/Users/zhangzhenwei/Library/
+				//模板方法,此时所有的beanDefinition已经加载,但是没有实例化,允许在子类中对beanFactory进行扩展处理
+				//用于实现 BeanFactoryPostProcessor 的接口
 				postProcessBeanFactory(beanFactory);
 //------------------------------------以上为BeanFactory的初始化和准备工作---------------------------------------------------------------
 				// Invoke factory processors registered as beans in the context.

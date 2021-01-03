@@ -89,6 +89,12 @@ import org.springframework.util.ObjectUtils;
  * @see org.aopalliance.intercept.MethodInterceptor
  * @see org.springframework.aop.Advisor
  * @see Advised
+ *
+ * Spring实现AOP的核心, 可以使用JDK和CGLib两种模式.
+ * JDK代理的对象必须要要有接口定义.  生成的代理是同接口的实现. 在invoke时候,代理无法区分具体哪个接口实现需要被切入,每次运行都会有开销.
+ * CGLib代理 为每个代理动态生成新类的字节码,并尽可能重用原来的类.
+ * 通常来讲两者差异不大, 若有冻结通知链时 CGLib性能略高.
+ *
  */
 @SuppressWarnings("serial")
 public class ProxyFactoryBean extends ProxyCreatorSupport
@@ -105,6 +111,7 @@ public class ProxyFactoryBean extends ProxyCreatorSupport
 	@Nullable
 	private String[] interceptorNames;
 
+	//目标
 	@Nullable
 	private String targetName;
 

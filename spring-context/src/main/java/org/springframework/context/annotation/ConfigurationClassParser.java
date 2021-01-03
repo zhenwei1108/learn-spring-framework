@@ -166,6 +166,7 @@ class ConfigurationClassParser {
 		for (BeanDefinitionHolder holder : configCandidates) {
 			BeanDefinition bd = holder.getBeanDefinition();
 			try {
+				//根据不同类型去判断
 				if (bd instanceof AnnotatedBeanDefinition) {
 					parse(((AnnotatedBeanDefinition) bd).getMetadata(), holder.getBeanName());
 				}
@@ -184,7 +185,7 @@ class ConfigurationClassParser {
 						"Failed to parse configuration class [" + bd.getBeanClassName() + "]", ex);
 			}
 		}
-
+		//最终解析
 		this.deferredImportSelectorHandler.process();
 	}
 
@@ -256,6 +257,11 @@ class ConfigurationClassParser {
 	 * @param configClass the configuration class being build
 	 * @param sourceClass a source class
 	 * @return the superclass, or {@code null} if none found or previously processed
+	 * 解析各种注解, 如@import,@componentscan,@propertysource,@bean
+	 * @see Import
+	 * @see ComponentScan
+	 * @see Bean
+	 * @see org.springframework.context.annotation.PropertySource
 	 */
 	@Nullable
 	protected final SourceClass doProcessConfigurationClass(ConfigurationClass configClass, SourceClass sourceClass)
@@ -280,7 +286,7 @@ class ConfigurationClassParser {
 		}
 
 		// Process any @ComponentScan annotations
-		//获取所有componentscan
+		//获取所有 componentscan
 		Set<AnnotationAttributes> componentScans = AnnotationConfigUtils.attributesForRepeatable(
 				sourceClass.getMetadata(), ComponentScans.class, ComponentScan.class);
 		if (!componentScans.isEmpty() &&

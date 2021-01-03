@@ -1,5 +1,6 @@
-package com.zhenwei.spring.demo.ioc;
+package com.zhenwei.spring.demo.ioc.autowired;
 
+import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -7,6 +8,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
+@Documented
 public @interface MineAutowired {
 
 

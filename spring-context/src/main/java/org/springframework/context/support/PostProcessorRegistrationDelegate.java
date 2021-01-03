@@ -72,7 +72,7 @@ final class PostProcessorRegistrationDelegate {
 			List<BeanDefinitionRegistryPostProcessor> currentRegistryProcessors = new ArrayList<>();
 
 			// First, invoke the BeanDefinitionRegistryPostProcessors that implement PriorityOrdered.
-			//先搞实现PriorityOrdered 接口的
+			//先搞实现 PriorityOrdered 接口的
 
 			//获取为BeanDefinitionRegistryPostProcessor的所有beanName
 			String[] postProcessorNames =
@@ -88,7 +88,7 @@ final class PostProcessorRegistrationDelegate {
 			sortPostProcessors(currentRegistryProcessors, beanFactory);
 
 			registryProcessors.addAll(currentRegistryProcessors);
-			//调用BeanDefinitionRegistryPostProcessor 接口的方法
+			//调用 BeanDefinitionRegistryPostProcessor 接口的方法 执行具体操作
 			invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry);
 			currentRegistryProcessors.clear();
 
@@ -108,7 +108,7 @@ final class PostProcessorRegistrationDelegate {
 			currentRegistryProcessors.clear();
 
 			// Finally, invoke all other BeanDefinitionRegistryPostProcessors until no further ones appear.
-			//对剩下实现BeanDefinitionRegistryPostProcessor 的方法进行处理
+			//对剩下实现 BeanDefinitionRegistryPostProcessor 的方法进行处理
 			boolean reiterate = true;
 			while (reiterate) {
 				reiterate = false;

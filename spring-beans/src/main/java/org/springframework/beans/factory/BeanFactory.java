@@ -65,6 +65,9 @@ import org.springframework.lang.Nullable;
  *
  * <p>Bean factory implementations should support the standard bean lifecycle interfaces
  * as far as possible. The full set of initialization methods and their standard order is:
+ * todo Bean初始化所执行的方法
+ * todo Bean初始化所执行的方法
+ * todo Bean初始化所执行的方法
  * <ol>
  * <li>BeanNameAware's {@code setBeanName}
  * <li>BeanClassLoaderAware's {@code setBeanClassLoader}

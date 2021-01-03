@@ -73,6 +73,12 @@ class ComponentScanAnnotationParser {
 	}
 
 
+	/**
+	 * 当前实现类为{@link ComponentScanAnnotationParser 解析其中各个参数}
+	 * @param componentScan
+	 * @param declaringClass
+	 * @return
+	 */
 	public Set<BeanDefinitionHolder> parse(AnnotationAttributes componentScan, final String declaringClass) {
 		ClassPathBeanDefinitionScanner scanner = new ClassPathBeanDefinitionScanner(this.registry,
 				componentScan.getBoolean("useDefaultFilters"), this.environment, this.resourceLoader);
@@ -129,6 +135,7 @@ class ComponentScanAnnotationParser {
 				return declaringClass.equals(className);
 			}
 		});
+		// 做具体操作
 		return scanner.doScan(StringUtils.toStringArray(basePackages));
 	}
 
