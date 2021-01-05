@@ -41,6 +41,5 @@ out
 test-output
 atlassian-ide-plugin.xml
 .gradletasknamecache
-build/
-/learn-spring/
+
 MANIFEST.MF
