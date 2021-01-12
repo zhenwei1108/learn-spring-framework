@@ -1,4 +1,4 @@
-package com.zhenwei.spring.learing.config;
+package com.zhenwei.spring.demo.config;
 
 import com.zhenwei.spring.learing.beans.User;
 import org.springframework.context.annotation.Bean;

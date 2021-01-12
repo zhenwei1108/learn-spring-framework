@@ -1,4 +1,4 @@
-package com.zhenwei.spring.learing.config;
+package com.zhenwei.spring.demo.config;
 
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 

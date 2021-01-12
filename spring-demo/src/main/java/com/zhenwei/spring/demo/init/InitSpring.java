@@ -1,4 +1,4 @@
-package com.zhenwei.spring.learing.init;
+package com.zhenwei.spring.demo.init;
 
 import com.zhenwei.spring.learing.beans.User;
 import org.springframework.context.ApplicationContext;

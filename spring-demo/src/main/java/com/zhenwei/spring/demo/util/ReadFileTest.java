@@ -1,11 +1,8 @@
-package com.zhenwei.spring.learing.test;
+package com.zhenwei.spring.demo.util;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import org.springframework.core.io.ClassPathResource;
+
+import java.io.*;
 
 public class ReadFileTest {
 

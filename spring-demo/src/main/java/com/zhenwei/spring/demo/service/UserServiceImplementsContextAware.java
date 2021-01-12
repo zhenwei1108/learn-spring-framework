@@ -1,4 +1,4 @@
-package com.zhenwei.spring.learing.service;
+package com.zhenwei.spring.demo.service;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
