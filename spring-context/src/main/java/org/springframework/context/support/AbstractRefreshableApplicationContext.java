@@ -127,6 +127,15 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
 			closeBeanFactory();
 		}
 		try {
+			/**
+			 * @see org.springframework.beans.factory.BeanNameAware
+			 * @see org.springframework.beans.factory.BeanFactoryAware
+			 * @see org.springframework.beans.factory.BeanClassLoaderAware
+			 * 构造beanfactory时,忽略三种接口
+			 * 		ignoreDependencyInterface(BeanNameAware.class);
+			 * 		ignoreDependencyInterface(BeanFactoryAware.class);
+			 * 		ignoreDependencyInterface(BeanClassLoaderAware.class);
+			 */
 			DefaultListableBeanFactory beanFactory = createBeanFactory();//构造DefaultListableBeanFactory
 			beanFactory.setSerializationId(getId());
 			customizeBeanFactory(beanFactory);

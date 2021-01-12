@@ -283,6 +283,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 * form, allowing for further customization.
 	 * <p>If none specified, a default environment will be initialized via
 	 * {@link #createEnvironment()}.
+	 * 默认提供 {@link StandardEnvironment}
 	 */
 	@Override
 	public ConfigurableEnvironment getEnvironment() {
@@ -495,7 +496,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	public void refresh() throws BeansException, IllegalStateException {
 		synchronized (this.startupShutdownMonitor) {
 			// Prepare this context for refreshing.
-			//容器刷新前准备,设置上下文状态,获取属性,验证必要的属性等
+			//容器刷新前准备,设置上下文状态,获取属性,验证必要的属性,初始化容器
 			prepareRefresh();
 
 			// Tell the subclass to refresh the internal bean factory.
@@ -599,15 +600,16 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		}
 
 		// Initialize any placeholder property sources in the context environment.
-		// 初始化任何占位符,未实现则不做任务操作
+		// 初始化任何占位符,未实现则不做任务操作,Springboot在这里加载tomcat
 		initPropertySources();
 
 		// Validate that all properties marked as required are resolvable:
 		// see ConfigurablePropertyResolver#setRequiredProperties
-		//判断所有 必须的参数都是可以解析的
+		//判断所有必须参数 是否都存在
 		getEnvironment().validateRequiredProperties();
 
 		// Store pre-refresh ApplicationListeners...
+		//初始化 监听 容器
 		if (this.earlyApplicationListeners == null) {
 			this.earlyApplicationListeners = new LinkedHashSet<>(this.applicationListeners);
 		}
@@ -619,6 +621,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 		// Allow for the collection of early ApplicationEvents,
 		// to be published once the multicaster is available...
+		//初始化 事件 容器
 		this.earlyApplicationEvents = new LinkedHashSet<>();
 	}
 
