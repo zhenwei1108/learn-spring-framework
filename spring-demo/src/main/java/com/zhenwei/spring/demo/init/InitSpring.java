@@ -1,6 +1,6 @@
 package com.zhenwei.spring.demo.init;
 
-import com.zhenwei.spring.learing.beans.User;
+import com.zhenwei.spring.demo.entity.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
