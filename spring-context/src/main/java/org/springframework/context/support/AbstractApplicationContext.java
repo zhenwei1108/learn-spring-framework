@@ -95,7 +95,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @see org.springframework.beans.factory.config.BeanPostProcessor
  * @see org.springframework.context.event.ApplicationEventMulticaster
  * @see org.springframework.context.ApplicationListener
- * @see org.springframework.context.MessageSource
+ * @see org.springframework.context.MessageSourceß
  */
 public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		implements ConfigurableApplicationContext {

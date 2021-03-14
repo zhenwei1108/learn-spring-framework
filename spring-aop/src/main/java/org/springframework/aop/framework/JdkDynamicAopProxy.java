@@ -60,6 +60,7 @@ import org.springframework.util.ClassUtils;
  * @see java.lang.reflect.Proxy
  * @see AdvisedSupport
  * @see ProxyFactory
+ * JDK动态代理
  */
 final class JdkDynamicAopProxy implements AopProxy, InvocationHandler, Serializable {
 
